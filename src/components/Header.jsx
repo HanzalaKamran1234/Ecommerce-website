@@ -324,6 +324,7 @@ export default function Header({ cartCount, onCartClick, onNavClick }) {
         @media (max-width: 768px) {
           .fixed-header {
             height: 64px;
+            top: 35px;
           }
           
           .scrolled {
@@ -339,19 +340,52 @@ export default function Header({ cartCount, onCartClick, onNavClick }) {
           }
           
           .logo-brand {
-            font-size: clamp(0.9rem, 4.8vw, 1.2rem);
+            font-size: clamp(0.82rem, 4.2vw, 1.1rem);
             white-space: nowrap;
-            letter-spacing: 0.02em;
+            letter-spacing: 0.01em;
           }
           
           .header-container {
-            padding: 0 16px;
+            padding: 0 12px;
+          }
+          
+          .header-actions {
+            gap: 10px;
+          }
+          
+          .cart-trigger-btn, .mobile-menu-trigger {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(197, 160, 89, 0.25) !important;
+            width: 38px;
+            height: 38px;
+            border-radius: 50% !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 !important;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+          }
+          
+          .cart-trigger-btn:hover, .mobile-menu-trigger:hover {
+            background: rgba(197, 160, 89, 0.12) !important;
+            transform: scale(1.05);
+          }
+          
+          .cart-count-badge {
+            top: -2px;
+            right: -2px;
+            width: 16px;
+            height: 16px;
+            font-size: 0.65rem;
           }
         }
 
         @media (max-width: 360px) {
           .logo-brand {
-            font-size: 0.88rem;
+            font-size: 0.8rem;
+          }
+          .fixed-header {
+            height: 60px;
           }
         }
       `}</style>

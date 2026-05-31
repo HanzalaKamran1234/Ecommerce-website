@@ -283,8 +283,14 @@ export default function Hero({ onExploreClick }) {
 
         @media (max-width: 768px) {
           .hero-section {
-            padding: 110px 16px 60px;
+            padding: 95px 16px 40px;
             height: auto;
+            min-height: auto;
+            display: block;
+          }
+
+          .hero-content {
+            margin-top: 0;
           }
           
           .badge-luxury {

@@ -346,13 +346,15 @@ export default function App() {
           align-items: center;
           justify-content: center;
           z-index: 950;
-          font-size: 0.72rem;
+          font-size: clamp(0.55rem, 2.5vw, 0.72rem); /* safe font sizing on small viewports */
           font-weight: 700;
-          letter-spacing: 0.15em;
+          letter-spacing: 0.12em;
           text-transform: uppercase;
-          background: rgba(7, 7, 8, 0.9);
+          background: rgba(7, 7, 8, 0.95);
           border-bottom: 1px solid rgba(197, 160, 89, 0.1);
-          padding: 0 16px;
+          padding: 0 12px;
+          overflow: hidden; /* bulletproof height guard */
+          white-space: nowrap;
         }
 
         .announcement-text {
