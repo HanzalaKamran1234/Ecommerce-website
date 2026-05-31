@@ -322,6 +322,14 @@ export default function Header({ cartCount, onCartClick, onNavClick }) {
         }
         
         @media (max-width: 768px) {
+          .fixed-header {
+            height: 64px;
+          }
+          
+          .scrolled {
+            height: 56px;
+          }
+          
           .desktop-nav {
             display: none;
           }
@@ -331,7 +339,19 @@ export default function Header({ cartCount, onCartClick, onNavClick }) {
           }
           
           .logo-brand {
-            font-size: 1.25rem;
+            font-size: clamp(0.9rem, 4.8vw, 1.2rem);
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+          }
+          
+          .header-container {
+            padding: 0 16px;
+          }
+        }
+
+        @media (max-width: 360px) {
+          .logo-brand {
+            font-size: 0.88rem;
           }
         }
       `}</style>

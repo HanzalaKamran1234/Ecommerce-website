@@ -51,7 +51,7 @@ export default function Hero({ onExploreClick }) {
           align-items: center;
           justify-content: center;
           overflow: hidden;
-          padding: 0 24px;
+          padding: 120px 24px 60px; /* Offset for floating glass header */
         }
 
         .video-background-container {
@@ -85,7 +85,29 @@ export default function Hero({ onExploreClick }) {
           flex-direction: column;
           align-items: center;
           z-index: 10;
-          margin-top: 60px;
+          margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+          .hero-section {
+            padding: 100px 16px 40px;
+            height: auto;
+            min-height: 100vh;
+          }
+          
+          .hero-content {
+            margin-top: 0;
+          }
+          
+          .badge-luxury {
+            margin-bottom: 16px;
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+          }
+          
+          .hero-subtitle {
+            margin-bottom: 30px;
+          }
         }
 
         .badge-luxury {

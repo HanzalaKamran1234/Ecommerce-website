@@ -330,7 +330,7 @@ export default function App() {
 
       <style>{`
         .app-luxury-vault {
-          padding-top: 110px; /* offset for fixed header + announcement */
+          padding-top: 0; /* Let hero overlay full-bleed */
           background-color: var(--bg-deep);
           min-height: 100vh;
           position: relative;
@@ -586,6 +586,68 @@ export default function App() {
           .footer-grid {
             grid-template-columns: 1fr;
             gap: 40px;
+          }
+        }
+
+        /* Responsive Mobile Vault Adjustments */
+        @media (max-width: 768px) {
+          .trust-badges-bar {
+            padding: 30px 0;
+          }
+          
+          .badges-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+          }
+          
+          .badge-card {
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.02);
+          }
+          
+          .badge-icon {
+            margin-bottom: 4px;
+          }
+          
+          .badge-text strong {
+            font-size: 0.8rem;
+          }
+          
+          .badge-text span {
+            font-size: 0.68rem;
+          }
+        }
+
+        @media (max-width: 600px) {
+          .catalog-section {
+            padding: 70px 0;
+          }
+          
+          .section-header-centered {
+            margin-bottom: 32px;
+          }
+          
+          .products-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px; /* tighter spacing for high end feel */
+          }
+          
+          .footer-copyright-bar {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 8px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .products-grid {
+            gap: 10px;
           }
         }
       `}</style>
