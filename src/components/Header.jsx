@@ -84,7 +84,7 @@ export default function Header({ cartCount, onCartClick, onNavClick }) {
       <style>{`
         .fixed-header {
           position: fixed;
-          top: 0;
+          top: 35px; /* Sits exactly under the 35px announcement bar */
           left: 0;
           width: 100%;
           height: 80px;

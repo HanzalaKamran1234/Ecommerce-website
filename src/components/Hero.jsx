@@ -1,8 +1,9 @@
 import React from 'react';
-import { ChevronDown, Play } from 'lucide-react';
+import { ChevronDown, Sparkles } from 'lucide-react';
 
 export default function Hero({ onExploreClick }) {
   const videoUrl = "https://mythicscentsations.com/cdn/shop/videos/c/vp/4e1af51a6ac0413a8f7c5352dbda11af/4e1af51a6ac0413a8f7c5352dbda11af.HD-1080p-7.2Mbps-76838236.mp4";
+  const heroImageUrl = "https://mythicscentsations.com/cdn/shop/files/WhatsAppImage2026-02-22at6.37.45AM.jpg?v=1771771085&width=3840";
 
   return (
     <section className="hero-section" id="home">
@@ -22,18 +23,39 @@ export default function Hero({ onExploreClick }) {
         <div className="video-overlay"></div>
       </div>
 
-      {/* Hero Content Section */}
-      <div className="hero-content animate-slide-up">
-        <div className="badge-luxury font-body">✨ THE ULTIMATE FRAGRANCE EXPERIENCE ✨</div>
-        <h1 className="hero-title font-title gold-text-gradient">Mythic Scentsations</h1>
-        <p className="hero-subtitle font-body">
-          Your odyssey begins here. Explore our curated vault of elite hybrid perfumes, engineered to blend the DNA profiles of the world's finest scents into a single masterpiece.
-        </p>
-        <div className="hero-ctas">
-          <button onClick={onExploreClick} className="premium-btn">
-            Explore Collection
-          </button>
+      {/* Split Hero Layout Grid */}
+      <div className="container-premium hero-grid-layout">
+        
+        {/* Left Side: Premium Brand Copy */}
+        <div className="hero-left-col animate-slide-up">
+          <div className="badge-luxury font-body">✨ THE ULTIMATE FRAGRANCE EXPERIENCE ✨</div>
+          <h1 className="hero-title font-title gold-text-gradient">Mythic Scentsations</h1>
+          <p className="hero-subtitle font-body">
+            Your odyssey begins here. Explore our curated vault of elite hybrid perfumes, engineered to blend the DNA profiles of the world's finest scents into a single masterpiece.
+          </p>
+          <div className="hero-ctas">
+            <button onClick={onExploreClick} className="premium-btn">
+              Explore Collection
+            </button>
+          </div>
         </div>
+
+        {/* Right Side: Perfume Bottle Picture Alongside Text */}
+        <div className="hero-right-col animate-slide-up">
+          <div className="hero-image-glow-ring"></div>
+          <div className="hero-image-frame glass-morphism gold-border">
+            <img 
+              src={heroImageUrl} 
+              alt="Mythic Scentsations Flagship Bottle" 
+              className="hero-display-image"
+            />
+            <div className="hero-image-badge font-body">
+              <Sparkles size={12} className="icon-gold" />
+              <span>Signature Scent</span>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       {/* Scrolling Indicator */}
@@ -46,12 +68,12 @@ export default function Hero({ onExploreClick }) {
         .hero-section {
           position: relative;
           width: 100%;
-          height: 100vh;
+          min-height: 100vh;
           display: flex;
           align-items: center;
           justify-content: center;
           overflow: hidden;
-          padding: 120px 24px 60px; /* Offset for floating glass header */
+          padding: 130px 24px 80px; /* Precise top padding to clear header height cleanly */
         }
 
         .video-background-container {
@@ -75,39 +97,24 @@ export default function Hero({ onExploreClick }) {
           left: 0;
           width: 100%;
           height: 100%;
-          background: radial-gradient(circle, rgba(7, 7, 8, 0.4) 0%, rgba(7, 7, 8, 0.92) 100%);
+          background: radial-gradient(circle, rgba(7, 7, 8, 0.5) 0%, rgba(7, 7, 8, 0.94) 100%);
         }
 
-        .hero-content {
-          max-width: 800px;
-          text-align: center;
+        /* Hero Split Grid Layout */
+        .hero-grid-layout {
+          display: grid;
+          grid-template-columns: 1.2fr 1fr;
+          gap: 60px;
+          align-items: center;
+          width: 100%;
+          z-index: 10;
+        }
+
+        .hero-left-col {
           display: flex;
           flex-direction: column;
-          align-items: center;
-          z-index: 10;
-          margin-top: 20px;
-        }
-
-        @media (max-width: 768px) {
-          .hero-section {
-            padding: 100px 16px 40px;
-            height: auto;
-            min-height: 100vh;
-          }
-          
-          .hero-content {
-            margin-top: 0;
-          }
-          
-          .badge-luxury {
-            margin-bottom: 16px;
-            font-size: 0.65rem;
-            letter-spacing: 0.15em;
-          }
-          
-          .hero-subtitle {
-            margin-bottom: 30px;
-          }
+          align-items: flex-start;
+          text-align: left;
         }
 
         .badge-luxury {
@@ -115,7 +122,7 @@ export default function Hero({ onExploreClick }) {
           font-size: 0.75rem;
           font-weight: 700;
           letter-spacing: 0.2em;
-          margin-bottom: 24px;
+          margin-bottom: 20px;
           padding: 6px 16px;
           background: rgba(197, 160, 89, 0.08);
           border: 1px solid rgba(197, 160, 89, 0.2);
@@ -124,9 +131,9 @@ export default function Hero({ onExploreClick }) {
         }
 
         .hero-title {
-          font-size: clamp(2.5rem, 8vw, 4.8rem);
+          font-size: clamp(2.5rem, 5vw, 4.2rem);
           font-weight: 700;
-          line-height: 1.1;
+          line-height: 1.15;
           letter-spacing: -0.01em;
           margin-bottom: 20px;
           text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
@@ -134,41 +141,103 @@ export default function Hero({ onExploreClick }) {
 
         .hero-subtitle {
           color: var(--silver-muted);
-          font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+          font-size: clamp(0.95rem, 2vw, 1.1rem);
           line-height: 1.6;
-          margin-bottom: 40px;
-          max-width: 650px;
+          margin-bottom: 36px;
+          max-width: 580px;
           text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
         .hero-ctas {
           display: flex;
-          gap: 16px;
-          flex-wrap: wrap;
+          justify-content: flex-start;
+        }
+
+        /* Right Column: Perfume Picture Alongside Copy */
+        .hero-right-col {
+          position: relative;
+          display: flex;
+          align-items: center;
           justify-content: center;
         }
 
+        .hero-image-glow-ring {
+          position: absolute;
+          width: 280px;
+          height: 280px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(197, 160, 89, 0.16) 0%, transparent 70%);
+          filter: blur(8px);
+          animation: slowPulse 5s infinite alternate;
+        }
+
+        @keyframes slowPulse {
+          0% { transform: scale(0.96); opacity: 0.6; }
+          100% { transform: scale(1.04); opacity: 1; }
+        }
+
+        .hero-image-frame {
+          position: relative;
+          width: 100%;
+          max-width: 320px;
+          border-radius: 20px;
+          padding: 16px;
+          background: rgba(18, 19, 22, 0.45);
+          box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+          transition: var(--transition-smooth);
+        }
+
+        .hero-image-frame:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 25px 50px rgba(197, 160, 89, 0.1);
+        }
+
+        .hero-display-image {
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+          border-radius: 12px;
+          filter: drop-shadow(0 10px 15px rgba(0,0,0,0.4));
+        }
+
+        .hero-image-badge {
+          position: absolute;
+          bottom: -10px;
+          right: -10px;
+          background: linear-gradient(135deg, var(--gold-accent) 0%, var(--gold-dark) 100%);
+          color: var(--bg-deep);
+          padding: 6px 12px;
+          border-radius: 30px;
+          font-weight: 700;
+          font-size: 0.68rem;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+
+        /* Scrolling Indicator */
         .scroll-indicator {
           position: absolute;
-          bottom: 30px;
+          bottom: 25px;
           left: 50%;
           transform: translateX(-50%);
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 8px;
+          gap: 6px;
           cursor: pointer;
           z-index: 10;
-          opacity: 0.7;
+          opacity: 0.6;
           transition: var(--transition-snappy);
         }
 
         .scroll-indicator:hover {
-          opacity: 1;
+          opacity: 0.95;
         }
 
         .scroll-text {
-          font-size: 0.7rem;
+          font-size: 0.65rem;
           font-weight: 600;
           letter-spacing: 0.25em;
           color: var(--silver-muted);
@@ -180,14 +249,56 @@ export default function Hero({ onExploreClick }) {
         }
 
         @keyframes bounce {
-          0%, 20%, 50%, 80%, 100% {
-            transform: translateY(0);
+          0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+          40% { transform: translateY(-8px); }
+          60% { transform: translateY(-4px); }
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+          .hero-grid-layout {
+            grid-template-columns: 1fr;
+            gap: 40px;
+            text-align: center;
           }
-          40% {
-            transform: translateY(-8px);
+          
+          .hero-left-col {
+            align-items: center;
+            text-align: center;
           }
-          60% {
-            transform: translateY(-4px);
+          
+          .hero-subtitle {
+            margin-left: auto;
+            margin-right: auto;
+          }
+          
+          .hero-ctas {
+            justify-content: center;
+          }
+          
+          .hero-image-frame {
+            max-width: 260px;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .hero-section {
+            padding: 110px 16px 60px;
+            height: auto;
+          }
+          
+          .badge-luxury {
+            margin-bottom: 16px;
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+          }
+          
+          .hero-title {
+            margin-bottom: 16px;
+          }
+          
+          .hero-subtitle {
+            margin-bottom: 28px;
           }
         }
       `}</style>
