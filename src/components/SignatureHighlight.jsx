@@ -43,7 +43,7 @@ export default function SignatureHighlight({ onPurchaseFlagship }) {
   const [activeDna, setActiveDna] = useState(0);
 
   return (
-    <section className="signature-section gold-border" id="signature-reveal">
+    <section className="signature-section" id="signature-reveal">
       <div className="container-premium signature-layout">
         
         {/* Left Side: Product Showcase */}
@@ -113,8 +113,8 @@ export default function SignatureHighlight({ onPurchaseFlagship }) {
       <style>{`
         .signature-section {
           background: #09090b;
-          border-left: none;
-          border-right: none;
+          border-top: 1px solid rgba(197, 160, 89, 0.15);
+          border-bottom: 1px solid rgba(197, 160, 89, 0.15);
           padding: 100px 0;
           position: relative;
           overflow: hidden;
@@ -329,18 +329,67 @@ export default function SignatureHighlight({ onPurchaseFlagship }) {
         }
 
         @media (max-width: 992px) {
+          .signature-section {
+            padding: 65px 0 80px; /* Safe mobile height padding with bottom breathing room */
+          }
+          
           .signature-layout {
             grid-template-columns: 1fr;
-            gap: 40px;
+            gap: 30px;
           }
+          
           .product-visual {
             order: 2;
+            margin-top: 36px; /* spacing above the bottle image */
           }
+          
           .composition-details {
             order: 1;
           }
+          
           .flagship-image {
-            max-height: 380px;
+            max-height: 340px;
+          }
+          
+          .visual-glow-ring {
+            width: 220px;
+            height: 220px;
+          }
+        }
+
+        @media (max-width: 600px) {
+          .dna-selectors {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            gap: 8px;
+            padding-bottom: 10px;
+            scrollbar-width: none; /* Hide scrollbar Firefox */
+            -ms-overflow-style: none; /* Hide scrollbar IE */
+          }
+          
+          .dna-selectors::-webkit-scrollbar {
+            display: none; /* Hide scrollbar Safari/Chrome */
+          }
+          
+          .dna-btn {
+            flex: 0 0 95px; /* Fixed pill width on mobile horizontal swiper */
+            padding: 10px 4px;
+            border-radius: 10px;
+          }
+          
+          .dna-icon-box {
+            width: 30px;
+            height: 30px;
+          }
+          
+          .dna-btn-text {
+            font-size: 0.68rem;
+          }
+          
+          .dna-detail-card {
+            padding: 16px;
+            margin-bottom: 24px;
           }
         }
       `}</style>
