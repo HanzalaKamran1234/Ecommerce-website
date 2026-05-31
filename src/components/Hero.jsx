@@ -256,6 +256,10 @@ export default function Hero({ onExploreClick }) {
 
         /* Responsive Breakpoints */
         @media (max-width: 992px) {
+          .scroll-indicator {
+            display: none !important; /* Hide to prevent overlaps on vertical mobile stacks */
+          }
+
           .hero-grid-layout {
             grid-template-columns: 1fr;
             gap: 40px;
