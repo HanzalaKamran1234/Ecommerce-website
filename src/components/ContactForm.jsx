@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Send, PhoneCall, MapPin, CheckCircle, RefreshCw } from 'lucide-react';
+import { Mail, Send, PhoneCall, MapPin, CheckCircle, RefreshCw, User, HelpCircle, MessageSquare } from 'lucide-react';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
@@ -105,14 +105,15 @@ export default function ContactForm() {
 
         {/* Right Side: Message Concierge Form */}
         <div className="message-form-panel glass-morphism gold-border animate-slide-up">
-          <h3 className="form-header font-title">Send Electronic Message</h3>
+          <h3 className="form-header font-title gold-text-gradient">Message Our Concierge</h3>
+          <p className="form-desc font-body">Complete the coordinates below and our master curators will respond within 24 business hours.</p>
           
           {contactSuccess ? (
             <div className="form-success-container font-body animate-fade-in">
               <CheckCircle size={36} className="icon-gold animate-bounce" />
               <h4 className="success-title font-title">Message Received!</h4>
               <p className="success-desc">
-                Your message has been beamed directly to our scent curation console. One of our concierges will respond to you within 24 business hours.
+                Your message has been logged securely at our desk. A concierge will be in touch with you shortly.
               </p>
             </div>
           ) : (
@@ -120,54 +121,66 @@ export default function ContactForm() {
               <div className="input-row">
                 <div className="input-group">
                   <label htmlFor="contact-name">Your Name</label>
-                  <input 
-                    id="contact-name"
-                    type="text" 
-                    placeholder="e.g. Hammad Khan"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    required
-                    className="glass-input"
-                  />
+                  <div className="input-wrapper-with-icon">
+                    <User className="input-field-icon" size={16} />
+                    <input 
+                      id="contact-name"
+                      type="text" 
+                      placeholder="e.g. Hammad Khan"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      required
+                      className="glass-input-premium"
+                    />
+                  </div>
                 </div>
                 
                 <div className="input-group">
                   <label htmlFor="contact-email">Email Address</label>
-                  <input 
-                    id="contact-email"
-                    type="email" 
-                    placeholder="e.g. hammad@example.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    required
-                    className="glass-input"
-                  />
+                  <div className="input-wrapper-with-icon">
+                    <Mail className="input-field-icon" size={16} />
+                    <input 
+                      id="contact-email"
+                      type="email" 
+                      placeholder="e.g. hammad@example.com"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      required
+                      className="glass-input-premium"
+                    />
+                  </div>
                 </div>
               </div>
 
               <div className="input-group">
                 <label htmlFor="contact-subject">Subject (Optional)</label>
-                <input 
-                  id="contact-subject"
-                  type="text" 
-                  placeholder="How can we assist you today?"
-                  value={formData.subject}
-                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  className="glass-input"
-                />
+                <div className="input-wrapper-with-icon">
+                  <HelpCircle className="input-field-icon" size={16} />
+                  <input 
+                    id="contact-subject"
+                    type="text" 
+                    placeholder="How can we assist you today?"
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                    className="glass-input-premium"
+                  />
+                </div>
               </div>
 
               <div className="input-group">
                 <label htmlFor="contact-message">Scent Inquiry / Message</label>
-                <textarea 
-                  id="contact-message"
-                  placeholder="Describe your request in detail..."
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  required
-                  className="glass-input"
-                  rows={5}
-                />
+                <div className="input-wrapper-with-icon text-area-wrapper">
+                  <MessageSquare className="input-field-icon text-area-icon" size={16} />
+                  <textarea 
+                    id="contact-message"
+                    placeholder="Describe your request in detail..."
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    required
+                    className="glass-input-premium glass-textarea-premium"
+                    rows={5}
+                  />
+                </div>
               </div>
 
               <button type="submit" disabled={isSubmittingContact} className="premium-btn send-message-btn">
@@ -191,7 +204,7 @@ export default function ContactForm() {
 
       <style>{`
         .contact-section {
-          padding: 100px 0;
+          padding: 120px 0;
           background: #070708;
           border-top: 1px solid rgba(197, 160, 89, 0.1);
         }
@@ -343,20 +356,27 @@ export default function ContactForm() {
           padding: 40px;
           border-radius: var(--border-radius-premium);
           background: rgba(18, 19, 22, 0.35);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .form-header {
-          font-size: 1.35rem;
-          font-weight: 600;
-          margin-bottom: 28px;
-          border-bottom: 1px solid rgba(197, 160, 89, 0.1);
-          padding-bottom: 12px;
+          font-size: 1.6rem;
+          font-weight: 700;
+          margin-bottom: 6px;
+          letter-spacing: -0.01em;
+        }
+
+        .form-desc {
+          color: var(--silver-muted);
+          font-size: 0.88rem;
+          line-height: 1.4;
+          margin-bottom: 32px;
         }
 
         .contact-form {
           display: flex;
           flex-direction: column;
-          gap: 20px;
+          gap: 24px;
         }
 
         .input-row {
@@ -368,11 +388,83 @@ export default function ContactForm() {
           flex: 1;
         }
 
+        .input-group {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .input-group label {
+          font-size: 0.72rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          color: var(--silver-muted);
+          margin-left: 2px;
+        }
+
+        /* Luxury Wrapper for Inputs with Icons */
+        .input-wrapper-with-icon {
+          position: relative;
+          display: flex;
+          align-items: center;
+          width: 100%;
+        }
+
+        .input-field-icon {
+          position: absolute;
+          left: 16px;
+          color: rgba(197, 160, 89, 0.45);
+          transition: var(--transition-snappy);
+          pointer-events: none;
+        }
+
+        .text-area-wrapper {
+          align-items: flex-start;
+        }
+
+        .text-area-icon {
+          top: 14px;
+        }
+
+        .glass-input-premium {
+          width: 100%;
+          background: rgba(13, 14, 17, 0.7);
+          border: 1px solid rgba(197, 160, 89, 0.15);
+          color: var(--silver-light);
+          padding: 12px 16px 12px 48px;
+          border-radius: 12px;
+          font-size: 0.9rem;
+          font-family: var(--font-family-body);
+          transition: var(--transition-smooth);
+        }
+
+        .glass-textarea-premium {
+          resize: none;
+        }
+
+        /* Focus interactions */
+        .glass-input-premium:focus {
+          outline: none;
+          background: rgba(18, 19, 22, 0.95);
+          border-color: var(--gold-primary);
+          box-shadow: 0 0 15px rgba(197, 160, 89, 0.15);
+        }
+
+        .glass-input-premium:focus + .input-field-icon,
+        .input-wrapper-with-icon:focus-within .input-field-icon {
+          color: var(--gold-primary);
+          transform: scale(1.08);
+          filter: drop-shadow(0 0 5px rgba(197, 160, 89, 0.3));
+        }
+
         .send-message-btn {
           width: 100%;
-          height: 48px;
-          margin-top: 10px;
+          height: 50px;
+          margin-top: 12px;
           border-radius: 12px !important;
+          font-size: 0.88rem;
+          letter-spacing: 0.12em;
         }
 
         /* Success screen within form */
@@ -410,10 +502,10 @@ export default function ContactForm() {
         @media (max-width: 576px) {
           .input-row {
             flex-direction: column;
-            gap: 20px;
+            gap: 24px;
           }
           .message-form-panel {
-            padding: 24px;
+            padding: 32px 20px;
           }
         }
       `}</style>
